@@ -7,13 +7,22 @@ function Navbar() {
         padding: '15px',
         backgroundColor: '#222',
         display: 'flex',
-        gap: '20px'
+        justifyContent: 'space-between',
+        alignItems: 'center'
       }}
     >
-      <Link style={{ color: 'white' }} to="/">Home</Link>
-      <Link style={{ color: 'white' }} to="/about">About</Link>
-      <Link style={{ color: 'white' }} to="/services">Services</Link>
-      <Link style={{ color: 'white' }} to="/contact">Contact</Link>
+      <Link style={{ color: 'white', textDecoration: 'none' }} to="/">
+        Home
+      </Link>
+      <Link style={{ color: 'white', textDecoration: 'none' }} to="/about">
+        About
+      </Link>
+      <Link style={{ color: 'white', textDecoration: 'none' }} to="/services">
+        Services
+      </Link>
+      <Link style={{ color: 'white', textDecoration: 'none' }} to="/contact">
+        Contact
+      </Link>
     </nav>
   );
 }
