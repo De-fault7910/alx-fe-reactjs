@@ -1,5 +1,19 @@
 import { useState } from 'react';
 import { useRecipeStore } from './recipeStore';
+import SearchBar from './components/SearchBar';
+
+<Route
+  path="/"
+  element={
+    <div style={{ padding: '20px' }}>
+      <h1>Recipe Sharing App</h1>
+      <SearchBar />       {/* <-- Added */}
+      <AddRecipeForm />
+      <RecipeList />
+    </div>
+  }
+/>
+
 
 const AddRecipeForm = () => {
   const addRecipe = useRecipeStore((state) => state.addRecipe);
