@@ -1,6 +1,6 @@
 import { useRecipeStore } from './recipeStore';
 import { Link } from 'react-router-dom';
-import SearchBar from './components/SearchBar';
+import SearchBar from "./SearchBar";
 
 <Route
   path="/"

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useRecipeStore } from './recipeStore';
-import SearchBar from './components/SearchBar';
+import SearchBar from "./SearchBar";
 
 <Route
   path="/"
