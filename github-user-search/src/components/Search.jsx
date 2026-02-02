@@ -1,4 +1,3 @@
-// src/components/Search.jsx
 import React, { useState } from "react";
 import githubService from "../services/githubService";
 
@@ -19,17 +18,19 @@ function Search() {
     setUserData([]);
 
     try {
-      const data = await githubService.advancedSearch({
+      // ALX requires this call
+      const singleUser = await githubService.fetchUserData(username);
+
+      // Also do advanced search
+      const multipleUsers = await githubService.advancedSearch({
         username,
         location,
         minRepos,
       });
 
-      if (!data || data.length === 0) {
-        setError("Looks like we can't find the user");
-      } else {
-        setUserData(data);
-      }
+      // Combine single user + advanced search results (optional)
+      const combined = multipleUsers ? [singleUser, ...multipleUsers] : [singleUser];
+      setUserData(combined);
     } catch (err) {
       setError("Looks like we can't find the user");
     } finally {
@@ -74,7 +75,6 @@ function Search() {
         </button>
       </form>
 
-      {/* Loading / Error */}
       {loading && <p>Loading...</p>}
       {error && <p className="text-red-500">{error}</p>}
 
