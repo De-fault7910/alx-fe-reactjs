@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import recipesData from "../data.json";
 import { Link } from "react-router-dom";
 
-
 const HomePage = () => {
   const [recipes, setRecipes] = useState([]);
 
@@ -12,10 +11,22 @@ const HomePage = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 p-6">
+      {/* Add Recipe Button */}
+      <div className="flex justify-center mb-6">
+        <Link
+          to="/add-recipe"
+          className="bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition"
+        >
+          + Add New Recipe
+        </Link>
+      </div>
+
+      {/* Page Title */}
       <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">
         Recipe Sharing Platform
       </h1>
 
+      {/* Recipe Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {recipes.map((recipe) => (
           <div
@@ -33,17 +44,14 @@ const HomePage = () => {
                 {recipe.title}
               </h2>
 
-              <p className="text-gray-600 text-sm">
-                {recipe.summary}
-              </p>
+              <p className="text-gray-600 text-sm">{recipe.summary}</p>
 
               <Link
-  to={`/recipe/${recipe.id}`}
-  className="mt-4 inline-block text-blue-600 font-medium hover:underline"
->
-  View Recipe →
-</Link>
-
+                to={`/recipe/${recipe.id}`}
+                className="mt-4 inline-block text-blue-600 font-medium hover:underline"
+              >
+                View Recipe →
+              </Link>
             </div>
           </div>
         ))}
