@@ -3,24 +3,45 @@
     "id": 1,
     "title": "Spaghetti Carbonara",
     "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
-    "image": "https://via.placeholder.com/300"
+    "image": "https://via.placeholder.com/600x400",
+    "ingredients": [
+      "Spaghetti pasta",
+      "Eggs",
+      "Parmesan cheese",
+      "Bacon",
+      "Black pepper",
+      "Salt"
+    ],
+    "instructions": [
+      "Boil spaghetti in salted water until al dente.",
+      "Fry bacon until crispy.",
+      "Beat eggs and mix with grated parmesan.",
+      "Combine spaghetti with bacon and remove from heat.",
+      "Quickly stir in egg-cheese mixture.",
+      "Season with black pepper and serve."
+    ]
   },
   {
     "id": 2,
     "title": "Chicken Tikka Masala",
     "summary": "Chunks of grilled chicken cooked in a smooth buttery and creamy tomato-based gravy.",
-    "image": "https://via.placeholder.com/300"
-  },
-  {
-    "id": 3,
-    "title": "Vegetable Stir Fry",
-    "summary": "Fresh vegetables sautéed in a savory soy-based sauce.",
-    "image": "https://via.placeholder.com/300"
-  },
-  {
-    "id": 4,
-    "title": "Beef Burger",
-    "summary": "Juicy grilled beef patty with lettuce, tomato, and cheese in a soft bun.",
-    "image": "https://via.placeholder.com/300"
+    "image": "https://via.placeholder.com/600x400",
+    "ingredients": [
+      "Chicken breast",
+      "Yogurt",
+      "Garlic",
+      "Ginger",
+      "Tomato puree",
+      "Cream",
+      "Spices"
+    ],
+    "instructions": [
+      "Marinate chicken in yogurt and spices.",
+      "Grill chicken until cooked.",
+      "Prepare tomato-based sauce.",
+      "Add cream and spices.",
+      "Combine chicken with sauce.",
+      "Simmer and serve hot."
+    ]
   }
 ]
