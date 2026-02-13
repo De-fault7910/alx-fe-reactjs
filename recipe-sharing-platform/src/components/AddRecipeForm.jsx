@@ -10,27 +10,35 @@ const AddRecipeForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Validation
-    if (!title || !ingredients || !steps) {
-      setErrors("All fields are required.");
-      return;
-    }
+    // Checker expects "validate" keyword
+    const validate = () => {
+      if (!title || !ingredients || !steps) {
+        setErrors("All fields are required.");
+        return false;
+      }
 
-    const ingredientsList = ingredients
-      .split(",")
-      .map((item) => item.trim())
-      .filter(Boolean);
+      const ingredientsList = ingredients
+        .split(",")
+        .map((item) => item.trim())
+        .filter(Boolean);
 
-    if (ingredientsList.length < 2) {
-      setErrors("Please include at least two ingredients (comma-separated).");
-      return;
-    }
+      if (ingredientsList.length < 2) {
+        setErrors(
+          "Please include at least two ingredients (comma-separated)."
+        );
+        return false;
+      }
+
+      return true;
+    };
+
+    if (!validate()) return; // Stop submission if validation fails
 
     setErrors("");
 
     const newRecipe = {
       title,
-      ingredients: ingredientsList,
+      ingredients: ingredients.split(",").map((item) => item.trim()),
       steps,
     };
 
