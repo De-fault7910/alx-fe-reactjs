@@ -1,20 +1,23 @@
-import React, { useState } from "react";
-import AddTodoForm from "./AddTodoForm.jsx";
+import { useState } from "react";
 
-const initialTodos = [
-  { id: 1, text: "Learn React", completed: false },
-  { id: 2, text: "Learn Testing", completed: false },
-  { id: 3, text: "Build Projects", completed: true }
-];
+function TodoList() {
+  const [todos, setTodos] = useState([
+    { id: 1, text: "Learn React", completed: false },
+    { id: 2, text: "Write Tests", completed: false },
+    { id: 3, text: "Build Todo App", completed: false }
+  ]);
 
-const TodoList = () => {
-  const [todos, setTodos] = useState(initialTodos);
+  const [newTodo, setNewTodo] = useState("");
 
-  const addTodo = (text) => {
+  const addTodo = (e) => {
+    e.preventDefault();
+    if (!newTodo.trim()) return;
+
     setTodos([
       ...todos,
-      { id: Date.now(), text, completed: false }
+      { id: Date.now(), text: newTodo, completed: false }
     ]);
+    setNewTodo("");
   };
 
   const toggleTodo = (id) => {
@@ -34,7 +37,15 @@ const TodoList = () => {
   return (
     <div>
       <h1>Todo List</h1>
-      <AddTodoForm onAdd={addTodo} />
+
+      <form onSubmit={addTodo}>
+        <input
+          placeholder="Add todo"
+          value={newTodo}
+          onChange={(e) => setNewTodo(e.target.value)}
+        />
+        <button type="submit">Add</button>
+      </form>
 
       <ul>
         {todos.map(todo => (
@@ -45,22 +56,14 @@ const TodoList = () => {
               textDecoration: todo.completed ? "line-through" : "none",
               cursor: "pointer"
             }}
-            data-testid="todo-item"
           >
             {todo.text}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                deleteTodo(todo.id);
-              }}
-            >
-              Delete
-            </button>
+            <button onClick={() => deleteTodo(todo.id)}>❌</button>
           </li>
         ))}
       </ul>
     </div>
   );
-};
+}
 
 export default TodoList;
