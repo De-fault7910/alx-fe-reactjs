@@ -1,9 +1,10 @@
-import formikForm from "./components/formikForm";
+import FormikForm from "./components/formikForm.jsx";
+
 
 function App() {
   return (
     <div>
-      <formikForm />
+      <FormikForm />
     </div>
   );
 }
