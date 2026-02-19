@@ -1,15 +1,10 @@
+import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
 const FormikForm = () => {
+  const initialValues = { username: "", email: "", password: "" };
 
-  const initialValues = {
-    username: "",
-    email: "",
-    password: "",
-  };
-
-  // Yup validation schema
   const validationSchema = Yup.object({
     username: Yup.string().required("Username is required"),
     email: Yup.string().email("Invalid email").required("Email is required"),
@@ -22,40 +17,44 @@ const FormikForm = () => {
     resetForm();
   };
 
-  return (
-    <div>
-      <h2>User Registration (Formik)</h2>
-
-      <Formik
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-        onSubmit={onSubmit}
-      >
-        <Form>
-          <div>
-            <label>Username:</label><br />
-            <Field type="text" name="username" />
-            <ErrorMessage name="username" component="div" />
-          </div>
-
-          <div>
-            <label>Email:</label><br />
-            <Field type="email" name="email" />
-            <ErrorMessage name="email" component="div" />
-          </div>
-
-          <div>
-            <label>Password:</label><br />
-            <Field type="password" name="password" />
-            <ErrorMessage name="password" component="div" />
-          </div>
-
-          <button type="submit">Register</button>
-        </Form>
-      </Formik>
-    </div>
+  return React.createElement(
+    "div",
+    null,
+    React.createElement("h2", null, "User Registration (Formik)"),
+    React.createElement(
+      Formik,
+      { initialValues, validationSchema, onSubmit },
+      React.createElement(
+        Form,
+        null,
+        React.createElement(
+          "div",
+          null,
+          React.createElement("label", null, "Username:"),
+          React.createElement("br"),
+          React.createElement(Field, { type: "text", name: "username" }),
+          React.createElement(ErrorMessage, { name: "username", component: "div" })
+        ),
+        React.createElement(
+          "div",
+          null,
+          React.createElement("label", null, "Email:"),
+          React.createElement("br"),
+          React.createElement(Field, { type: "email", name: "email" }),
+          React.createElement(ErrorMessage, { name: "email", component: "div" })
+        ),
+        React.createElement(
+          "div",
+          null,
+          React.createElement("label", null, "Password:"),
+          React.createElement("br"),
+          React.createElement(Field, { type: "password", name: "password" }),
+          React.createElement(ErrorMessage, { name: "password", component: "div" })
+        ),
+        React.createElement("button", { type: "submit" }, "Register")
+      )
+    )
   );
 };
 
 export default FormikForm;
-

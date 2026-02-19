@@ -1,12 +1,8 @@
-import FormikForm from "./components/formikForm.jsx";
-
+import React from "react";
+import FormikForm from "./components/formikForm.js";
 
 function App() {
-  return (
-    <div>
-      <FormikForm />
-    </div>
-  );
+  return React.createElement("div", null, React.createElement(FormikForm));
 }
 
 export default App;
