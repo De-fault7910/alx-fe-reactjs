@@ -7,9 +7,9 @@ const ProfileDetails = () => {
       <h3>Profile Details</h3>
       <p>This section contains your personal profile information.</p>
       <ul>
-        <li>Name: John Doe</li>
-        <li>Email: johndoe@example.com</li>
-        <li>Username: johndoe123</li>
+        <li>Name: Christine Josiah Judah Cobbah</li>
+        <li>Email: cobbahjudah9@gmail.com</li>
+        <li>Username: 20ShikaMaru0</li>
       </ul>
     </div>
   );
