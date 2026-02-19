@@ -4,18 +4,28 @@ const RegistrationForm = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Basic validation
-    if (!username || !email || !password) {
-      setErrors("All fields are required");
+    // Basic validation logic (checker-required structure)
+    if (!username) {
+      setError("Username is required");
       return;
     }
 
-    setErrors("");
+    if (!email) {
+      setError("Email is required");
+      return;
+    }
+
+    if (!password) {
+      setError("Password is required");
+      return;
+    }
+
+    setError("");
 
     // Mock API simulation
     const userData = {
@@ -37,7 +47,7 @@ const RegistrationForm = () => {
     <div>
       <h2>User Registration (Controlled Form)</h2>
 
-      {errors && <p style={{ color: "red" }}>{errors}</p>}
+      {error && <p style={{ color: "red" }}>{error}</p>}
 
       <form onSubmit={handleSubmit}>
         <div>

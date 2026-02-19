@@ -1,29 +1,29 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
-const FormikForm = () => {
+const formikForm = () => {
   const initialValues = {
     username: "",
     email: "",
     password: "",
   };
 
+  // Yup validation schema
   const validationSchema = Yup.object({
     username: Yup.string().required("Username is required"),
-    email: Yup.string().email("Invalid email format").required("Email is required"),
-    password: Yup.string().min(6, "Minimum 6 characters").required("Password is required"),
+    email: Yup.string().email("Invalid email").required("Email is required"),
+    password: Yup.string().required("Password is required"),
   });
 
   const onSubmit = (values, { resetForm }) => {
-    // Mock API simulation
-    console.log("User Registered (Formik):", values);
-    alert("User registered successfully with Formik!");
+    console.log("Formik Registration:", values);
+    alert("User registered with Formik");
     resetForm();
   };
 
   return (
     <div>
-      <h2>User Registration (Formik Form)</h2>
+      <h2>User Registration (Formik)</h2>
 
       <Formik
         initialValues={initialValues}
@@ -34,19 +34,19 @@ const FormikForm = () => {
           <div>
             <label>Username:</label><br />
             <Field type="text" name="username" />
-            <ErrorMessage name="username" component="div" style={{ color: "red" }} />
+            <ErrorMessage name="username" component="div" />
           </div>
 
           <div>
             <label>Email:</label><br />
             <Field type="email" name="email" />
-            <ErrorMessage name="email" component="div" style={{ color: "red" }} />
+            <ErrorMessage name="email" component="div" />
           </div>
 
           <div>
             <label>Password:</label><br />
             <Field type="password" name="password" />
-            <ErrorMessage name="password" component="div" style={{ color: "red" }} />
+            <ErrorMessage name="password" component="div" />
           </div>
 
           <button type="submit">Register</button>
@@ -56,4 +56,4 @@ const FormikForm = () => {
   );
 };
 
-export default FormikForm;
+export default formikForm;
