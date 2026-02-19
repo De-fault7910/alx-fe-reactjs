@@ -1,13 +1,18 @@
+// src/main.jsx
 import React from "react";
-import PostsComponent from "./components/PostsComponent.jsx";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
 
-function App() {
-  return (
-    <div>
-      <h1>React Query Demo</h1>
-      <PostsComponent />
-    </div>
-  );
-}
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
-export default App;
+const queryClient = new QueryClient();
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <QueryClientProvider client={queryClient}>
+      <App />
+      <ReactQueryDevtools initialIsOpen={false} /> {/* DevTools here */}
+    </QueryClientProvider>
+  </React.StrictMode>
+);
