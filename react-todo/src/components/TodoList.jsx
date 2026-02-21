@@ -1,37 +1,39 @@
 import React, { useState } from "react";
 
-const initialTodos = [
-  { id: 1, text: "Learn React", completed: false },
-  { id: 2, text: "Write Tests", completed: false },
-  { id: 3, text: "Build Todo App", completed: true },
-];
+const TodoList = () => {
+  const [todos, setTodos] = useState([
+    { id: 1, text: "Learn React", completed: false },
+    { id: 2, text: "Write Tests", completed: false },
+    { id: 3, text: "Build Todo App", completed: false },
+  ]);
 
-function TodoList() {
-  const [todos, setTodos] = useState(initialTodos);
-  const [newTodo, setNewTodo] = useState("");
+  const [input, setInput] = useState("");
 
+  // ADD
   const addTodo = (e) => {
     e.preventDefault();
-    if (!newTodo.trim()) return;
+    if (!input.trim()) return;
 
-    const todo = {
-      id: Date.now(),
-      text: newTodo,
-      completed: false,
-    };
+    setTodos([
+      ...todos,
+      { id: Date.now(), text: input, completed: false },
+    ]);
 
-    setTodos([...todos, todo]);
-    setNewTodo("");
+    setInput("");
   };
 
+  // TOGGLE
   const toggleTodo = (id) => {
     setTodos(
       todos.map((todo) =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+        todo.id === id
+          ? { ...todo, completed: !todo.completed }
+          : todo
       )
     );
   };
 
+  // DELETE ✅ FIXED
   const deleteTodo = (id) => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
@@ -43,8 +45,8 @@ function TodoList() {
       <form onSubmit={addTodo}>
         <input
           placeholder="Add todo"
-          value={newTodo}
-          onChange={(e) => setNewTodo(e.target.value)}
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
         />
         <button type="submit">Add</button>
       </form>
@@ -60,10 +62,12 @@ function TodoList() {
             }}
           >
             {todo.text}
-            <button onClick={(e) => {
-              e.stopPropagation();
-              deleteTodo(todo.id);
-            }}>
+            <button
+              onClick={(e) => {
+                e.stopPropagation(); // 🔥 prevents toggle when deleting
+                deleteTodo(todo.id);
+              }}
+            >
               Delete
             </button>
           </li>
@@ -71,6 +75,6 @@ function TodoList() {
       </ul>
     </div>
   );
-}
+};
 
 export default TodoList;
